@@ -18,10 +18,13 @@
 
         <div class="mt-3">
             <button type="submit" class="btn btn-primary">Submit
-            </button><br />
-            <img id="output" height="30%" />
-            <br/>
-            <img src="{% static context %}" />
+            </button><br /> {% if label %}
+            <h2>
+                {{ label }}
+            </h2>
+            {% endif %}
+            <img id="output" height="30%" /> {% if context %}
+            <img src="{% static context %}" /> {% endif %}
         </div>
     </form>
 </div>

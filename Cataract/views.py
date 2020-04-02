@@ -41,12 +41,17 @@ def file_storage_to_db(request):
 					'filename': myFile.name, 
 					'file_url': file_url
 				  }
+		predict(context['filename'])
+
 		for name in os.listdir(file_path):
-			if path != 'favicon.png' and path != 'LibrusLogo.png' and path != context['filename']:
+			if name != 'favicon.png' and name != 'LibrusLogo.png' and name != context['filename']:
 				p = "/".join([file_path,name])
 				os.remove(p)
-				
+
 		Cataract = '/img/' + context['filename']
 		return render(request, 'Cataract.html', {'context': Cataract})
 	else:
 		return render(request, 'Cataract.html')		
+
+def predict(name):
+	pass

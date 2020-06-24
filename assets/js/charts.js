@@ -31,9 +31,9 @@ var bctx = document.getElementById('barchart').getContext('2d');
 var barchart = new Chart(bctx, {
     type: 'bar',
     data: {
-        labels: things_mentioned,
+        labels: lables,
         datasets: [{
-            data: mentioned_count,
+            data: lables_score,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

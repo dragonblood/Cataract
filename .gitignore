@@ -1,1 +1,4 @@
-Cataract/__pycache__/
+cataract/INGR
+cataract/__pycache__
+main/__pycache__
+cataract/migrations

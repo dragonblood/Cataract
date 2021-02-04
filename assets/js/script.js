@@ -1,3 +1,9 @@
+function display() {
+  var x = document.getElementById("uploadContainer");
+  x.style.display = "block";
+  x.style.margin = "0 0 0 5%";
+}
+
 function readURL(e) {
     if (e.files && e.files[0]) {
         var a = new FileReader;

@@ -43,6 +43,7 @@ python manage.py runserver
 - [ ] Modify and display results to user
 - [ ] Upload Screenshots
 - [ ] create cataract.yml and requirements.txt
+- [ ] Add automatic magic code .vscode folder
 
 ### Please Feel Free to raise an issue.
 ### Take Permission Before using it in your work.

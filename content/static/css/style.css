@@ -1,0 +1,317 @@
+@import url('scss-main.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+:root {
+  --border-size: 0.125rem;
+  --duration: 250ms;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --color-primary: white;
+  --color-secondary: black;
+  --color-tertiary: dodgerblue;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --space: 1rem;
+}
+
+
+*{
+  margin:0;
+  padding:0;
+
+}
+
+.bigwhitecontainer {
+  display: flex;
+  padding:5% 1% 0% 5%;
+  align-items: center;
+  width:50vw;
+  min-width: 400px;
+  height:850px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: 'Amatic SC', cursive;
+}
+
+h1{
+  position: absolute;
+  font-size: 70px;
+  top: 8px;
+  left: 20px;
+}
+
+/* Hide the browser's default checkbox */
+.bigwhitecontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  box-shadow:  10px 10px 10px #cccccc,
+  10px 10px 10px #ffffff,
+  0 0 0 #cccccc inset,
+  0 0 0 #ffffff inset;
+}
+
+/* On mouse-over, add a grey background color */
+.bigwhitecontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.bigwhitecontainer input:checked ~ .checkmark {
+  animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) 1s;
+  animation-fill-mode: forwards;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  /* content: "";
+  display: none; */
+  position: absolute;
+  width:fit-content;
+}
+
+/* Style the checkmark/indicator
+.bigwhitecontainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}  */
+
+/*////////////////////////////////////////////////////////////////////////////uncommetn this*/
+
+.content-container{
+  display: none;
+}
+
+@keyframes anime {
+  20% {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    box-shadow:  0 0 0 #cccccc,
+                  0 0 0 #ffffff,
+                  10px 10px 10px #cccccc inset,
+                  -10px -10px 10px #ffffff inset;
+  }
+  60% {
+    width: 60px;
+    height: 90%;
+    background: #f8f8f8;
+    box-shadow:  10px 10px 10px #cccccc,
+                  10px 10px 10px #ffffff,
+                  0 0 0 #cccccc inset,
+                  0 0 0 #ffffff inset;
+  }
+  100% {
+    width: 90%;
+    height: 90%;
+    background: #fafafa;
+    box-shadow:  40px 40px 40px #cccccc,
+                  0 0 0 #ffffff,
+                  0 0 0 #cccccc inset,
+                  2px 2px 2px #ffffff inset;
+  }
+}
+
+
+.card{
+  height: auto;
+  width: 700px;
+  border-radius: 50px;
+
+  transition: 0.3s;
+  width: 90%;
+
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+  /* display: block; */
+  /*margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%; */      
+}
+
+.p1{
+font-size: 30px;
+}
+.container {
+  padding: 10px 20px 30px 40px;
+
+}
+
+.multi-button {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  box-shadow: var(--shadow) 4px 4px;
+}
+
+.multi-button button {
+  border-radius: 10px;
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  padding:
+      calc(var(--space) / 1.125)
+      var(--space)
+      var(--space);
+  border: var(--border-size) solid black;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  font-size: 1.5rem;
+  font-family: var(--font-family);
+  text-transform: lowercase;
+  text-shadow: var(--shadow) 2px 2px;
+  transition: flex-grow var(--duration) var(--ease);
+}
+
+.multi-button button + button {
+  border-left: var(--border-size) solid black;
+  margin-left: calc(var(--border-size) * -1);
+}
+
+.multi-button button:hover,
+.multi-button button:focus {
+  flex-grow: 2;
+  color: white;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--color-secondary);
+}
+
+.multi-button button:focus {
+  outline: var(--border-size) dashed var(--color-primary);
+  outline-offset: calc(var(--border-size) * -3);
+}
+
+.multi-button:hover button:focus:not(:hover) {
+  flex-grow: 1;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  outline-color: var(--color-tertiary);
+}
+
+.multi-button button:active {
+  transform: translateY(var(--border-size));
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+
+.grid-container {
+  display: flex;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Document";
+}
+
+
+
+.Document {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Title"
+    "Main";
+  grid-area: Document;
+}
+
+.Title { grid-area: Title; }
+
+.Main {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "File-upload Chart";
+  grid-area: Main;
+}
+
+.File-upload {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.5fr 0.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "file-upload-area"
+    "button";
+  grid-area: File-upload;
+}
+
+.button { grid-area: button; }
+
+.file-upload-area { grid-area: file-upload-area; }
+
+.Chart { grid-area: Chart; }
+
+
+
+#upload {
+  opacity: 0
+}
+
+/* #upload-label {
+  position: ;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%)
+} */
+
+.image-area {
+  border: 2px dashed #fe6339;
+  padding: 1rem;
+  position: relative;
+}
+
+.image-area::before {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .8rem;
+  z-index: 1
+}
+
+.image-area img {
+  z-index: 2;
+  position: relative;
+  max-width: 60%;
+  max-height:40%;
+
+}

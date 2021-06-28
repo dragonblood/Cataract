@@ -3,19 +3,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Neumorphism_animation</title>
+    <title>Project Cataract</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
     />
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'scss/scss-main.css' %}" rel="stylesheet" />
   </head>
   <body>
     <!-- partial:index.partial.html -->
     <body>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4" style="background: #f0f0f0;">
+          <div class="col-md-6" style="background: #f0f0f0;">
             <label class="bigwhitecontainer soft-element soft-shadow">
               <h1>Project Cataract</h1>
               <input type="radio" onclick="setTimeout(display, 4000);" />
@@ -70,16 +71,17 @@
             </label>
           </div>
 
-          <div class="col-md-8">
+          <div class="col-md-6">
             <section id="contact" class="contact">
               <div class="row">
+
                 <div class="col-lg-6 col-xl-6">
                     <div>
                         <canvas id="barchart"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-6 offset-xl-0">
-                    <div class="chart-area ">
+                    <div class="chart-area">
                         <canvas id="piechart"></canvas>
                     </div>
                 </div>
@@ -91,10 +93,15 @@
 
       {{discription|json_script:"discription"}}
     <script>
-        var sentiment = ['pos','puss','ass'];
+        var sentiment = ['pos','neg','neu'];
         var sentiment_data = [50, 29, 30];
-        var lables = JSON.parse(document.getElementById('discription').textContent);
-        var lables_score = {{score}};
+
+        var lables = ['pos','neg','neu'];
+        var lables_score = [50, 29, 30];
+
+        // var lables = JSON.parse(document.getElementById('discription').textContent);
+        // var lables_score = {{score}};
+
     </script>
     <!-- partial -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -102,6 +109,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
+
+
     <script src="{% static 'js/charts.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
   </body>

@@ -26,7 +26,7 @@ SECRET_KEY = 'd!#%ed6c((y1!94n_e4pnansf+&0c+pqqs0232geb#tex=*$-w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cataract.azurewebsites.net']
 
 
 # Application definition

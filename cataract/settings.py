@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # Apps
     'cataract',
     #vendor
-    'bootstrap4',
+    # 'bootstrap4',
 ]
 
 MIDDLEWARE = [

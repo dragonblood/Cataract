@@ -37,10 +37,10 @@ def cat(request):
             file_name = str(request.FILES['docfile'])
 
             local_image_path = os.path.join (file_link_local, file_name)
-            #local_image = open(local_image_path, "rb")
+            local_image = open(local_image_path, "rb")
 
             remote_image = file_link_remote+file_name
-            response = azureAPI(remote_image)
+            response = azureAPI(local_image)
             print(response)
 
         else:
@@ -49,15 +49,15 @@ def cat(request):
         form = DocumentForm() 
     # documents = Document.objects.all()
 
-    return render(request, 'index.html', {'response': response, 'form': form}) #'documents': documents, 'message': message
+    return render(request, 'index.html', {'response': response, 'form': form})
 
 
-def azureAPI(local_image):
+def azureAPI(image_url):
 
     computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
-    #description_results = computervision_client.describe_image(remote_image_url )
+    #description_results = computervision_client.describe_image(image_url)
 
-    description_results = computervision_client.describe_image_in_stream(local_image)
+    description_results = computervision_client.describe_image_in_stream(image_url)
 
     print("Description of remote image: ")
 

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 whitenoise = "*"
+azure-cognitiveservices-vision-computervision = "*"
+pillow = "*"
 
 [dev-packages]
 

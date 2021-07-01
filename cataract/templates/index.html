@@ -12,44 +12,49 @@
     <link href="{% static 'scss/scss-main.css' %}" rel="stylesheet" />
   </head>
   <body>
-    <!-- partial:index.partial.html -->
-    <body>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6" style="background: #f0f0f0;">
-            <label class="bigwhitecontainer soft-element soft-shadow">
-              <h1>Project Cataract</h1>
-              <input type="radio" onclick="setTimeout(display, 4000);" />
-              <span class="checkmark">
-                <div id="uploadContainer" class="content-container">
-                  <div class="bootstrap_img_upload pt-5">
-                    <div class="box pt-3">
-                      <img src="{% static 'img/crayon-2072.svg' %}" alt="" width="300px" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6" style="background: #f0f0f0;">
+          <label class="bigwhitecontainer soft-element soft-shadow">
+            <h1>Project Cataract</h1>
+            <input type="radio" class="start_btn" onclick="setTimeout(display, 3000);" />
+            <span class="checkmark">
+              <div id="uploadContainer" class="content-container">
+                <div class="bootstrap_img_upload pt-5">
+                  <div class="box pt-3">
+                    <img src="{% static 'img/crayon-2072.svg' %}" alt="" width="300px" />
 
-                      <div class="row py-4 bootstrap_img_upload pt-5">
+                    <div class="row py-4 bootstrap_img_upload pt-5">
+
+                      <form action="{% url "home" %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p>{{ form.non_field_errors }}</p>
+                        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                      
+                          <p>
+                            <img src="{% static 'img/upload.png' %}" width="30px" />
+                              {{ form.docfile }}
+                          </p>
+
+                        <div class="image-area mt-4">
+                          <img
+                            id="imageResult"
+                            src="#"
+                            alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"
+                          />
+                        </div>
+                        <div class="multi-button">
+                          <!-- <button>Do something</button> -->
+                          <input name="submittext" type="submit" value="Analysis" class="submit_btn">
+                          <!-- <button>I think it will do something</button> -->
+                        </div>
+                      </form>
+
+                      <!-- <form method="post">
+                        {% csrf_token %}
                         <div class="box pt-3 col-lg-6 mx-auto">
-                          <!-- Upload image input-->
-                          <div
-                            class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm"
-                          >
-                            <input
-                              id="upload"
-                              type="file"
-                              onchange="readURL(this);"
-                              class="form-control border-0"
-                            />
-                            <!-- <label id="upload-label" for="upload" class="font-weight-light text-muted">Choosefile</label> -->
-                            <div class="input-group-append">
-                              <label
-                                for="upload"
-                                class="btn btn-light m-0 rounded-pill px-4"
-                              >
-                                <img src="{% static 'img/upload.png' %}" width="30px" />
-                                <small class="p1">Choose file</small>
-                              </label>
-                            </div>
-                          </div>
-                          <!-- Uploaded image area-->
+           
                           <div class="image-area mt-4">
                             <img
                               id="imageResult"
@@ -61,46 +66,87 @@
                         </div><br>
                         <div class="multi-button">
                           <button>Do something</button>
+                          <input name="submittext" type="submit" value="Analysis" class="submit_btn">
                           <button>I think it will do something</button>
                         </div>
-                      </div>
+                      </form> -->
                     </div>
                   </div>
                 </div>
-              </span>
-            </label>
-          </div>
-
-          <div class="col-md-6">
-            <section id="contact" class="contact">
-              <div class="row">
-
-                <div class="col-lg-6 col-xl-6">
-                    <div>
-                        <canvas id="barchart"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-6 offset-xl-0">
-                    <div class="chart-area">
-                        <canvas id="piechart"></canvas>
-                    </div>
-                </div>
               </div>
-            </section>
-          </div>
+            </span>
+          </label>
+        </div>
+
+        <div class="col-md-6">
+          <section id="contact" class="contact">
+            <!-- <form action="{% url "home" %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <p>{{ form.non_field_errors }}</p>
+              <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+              <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                <p>
+                  <img src="{% static 'img/upload.png' %}" width="30px" />
+                    {{ form.docfile.errors }}
+                    {{ form.docfile }}
+                </p>
+              </div>
+              <div class="image-area mt-4">
+                <img
+                  id="imageResult"
+                  src="#"
+                  alt=""
+                  class="img-fluid rounded shadow-sm mx-auto d-block"
+                />
+              </div>
+              <div class="multi-button">
+                <button>Do something</button>
+                <input name="submittext" type="submit" value="Analysis" class="submit_btn">
+                <button>I think it will do something</button>
+              </div>
+            </form> -->
+
+            <p><b>Status:</b></p>
+            <p id="status" style="height:160px; width: 593px; overflow: scroll;" />
+            {{response}}
+            {% for tag in response.0 %}
+              <p>{{tag}}</p>
+            {% endfor %}
+
+            {% for caption in response.1 %}
+              <p>{{caption.text}}</p>
+              <p>{{caption.confidence}}</p>
+            {% endfor %}
+
+            <div class="row">
+
+              <div class="col-lg-6 col-xl-6">
+                  <div>
+                      <canvas id="barchart"></canvas>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-xl-6 offset-xl-0">
+                  <div class="chart-area">
+                      <canvas id="piechart"></canvas>
+                  </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
+    </div>
 
-      {{discription|json_script:"discription"}}
+
+    <!-- {{discription|json_script:"discription"}} -->
     <script>
-        var sentiment = ['pos','neg','neu'];
-        var sentiment_data = [50, 29, 30];
+      var sentiment = ['pos','neg','neu'];
+      var sentiment_data = [50, 29, 30];
 
-        var lables = ['pos','neg','neu'];
-        var lables_score = [50, 29, 30];
+      var lables = ['pos','neg','neu'];
+      var lables_score = [50, 29, 30];
 
-        // var lables = JSON.parse(document.getElementById('discription').textContent);
-        // var lables_score = {{score}};
+      // var lables = JSON.parse(document.getElementById('discription').textContent);
+      // var lables_score = {{score}};
 
     </script>
     <!-- partial -->
@@ -109,8 +155,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-
-
 
     <script src="{% static 'js/charts.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>

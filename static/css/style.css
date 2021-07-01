@@ -22,7 +22,7 @@
 
 .bigwhitecontainer {
   display: flex;
-  padding:5% 1% 0% 5%;
+  padding:0% 5% 0% 5%;
   align-items: center;
   width:50vw;
   min-width: 400px;
@@ -45,7 +45,7 @@ h1{
 }
 
 /* Hide the browser's default checkbox */
-.bigwhitecontainer input {
+.bigwhitecontainer .start_btn {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -64,12 +64,12 @@ h1{
 }
 
 /* On mouse-over, add a grey background color */
-.bigwhitecontainer:hover input ~ .checkmark {
+.bigwhitecontainer:hover .submit_btn ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.bigwhitecontainer input:checked ~ .checkmark {
+.bigwhitecontainer .start_btn:checked ~ .checkmark {
   animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) 1s;
   animation-fill-mode: forwards;
 }
@@ -82,8 +82,8 @@ h1{
   width:fit-content;
 }
 
-/* Style the checkmark/indicator
-.bigwhitecontainer .checkmark:after {
+/* Style the checkmark/indicator */
+/* .bigwhitecontainer .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -134,11 +134,11 @@ h1{
 
 .card{
   height: auto;
-  width: 700px;
+  /* width: 700px; */
   border-radius: 50px;
 
   transition: 0.3s;
-  width: 90%;
+  /* width: 90%; */
 
   background: #e0e0e0;
   box-shadow:  20px 20px 60px #bebebe,
@@ -160,11 +160,10 @@ font-size: 30px;
 .multi-button {
   display: flex;
   text-align: center;
-  width: 100%;
-  box-shadow: var(--shadow) 4px 4px;
+  /* box-shadow: var(--shadow) 4px 4px; */
 }
 
-.multi-button button {
+.multi-button .submit_btn {
   border-radius: 10px;
   flex-grow: 1;
   cursor: pointer;
@@ -183,13 +182,13 @@ font-size: 30px;
   transition: flex-grow var(--duration) var(--ease);
 }
 
-.multi-button button + button {
+.multi-button .submit_btn + .submit_btn {
   border-left: var(--border-size) solid black;
   margin-left: calc(var(--border-size) * -1);
 }
 
-.multi-button button:hover,
-.multi-button button:focus {
+.multi-button .submit_btn:hover,
+.multi-button .submit_btn:focus {
   flex-grow: 2;
   color: white;
   outline: none;
@@ -197,19 +196,19 @@ font-size: 30px;
   background-color: var(--color-secondary);
 }
 
-.multi-button button:focus {
+.multi-button .submit_btn:focus {
   outline: var(--border-size) dashed var(--color-primary);
   outline-offset: calc(var(--border-size) * -3);
 }
 
-.multi-button:hover button:focus:not(:hover) {
+.multi-button:hover .submit_btn:focus:not(:hover) {
   flex-grow: 1;
   color: var(--color-secondary);
   background-color: var(--color-primary);
   outline-color: var(--color-tertiary);
 }
 
-.multi-button button:active {
+.multi-button .submit_btn:active {
   transform: translateY(var(--border-size));
 }
 
@@ -259,7 +258,7 @@ font-size: 30px;
   grid-area: Main;
 }
 
-.File-upload {
+.file-upload {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1.5fr 0.5fr;
@@ -270,13 +269,23 @@ font-size: 30px;
   grid-area: File-upload;
 }
 
-.button { grid-area: button; }
+button { grid-area: button; }
 
 .file-upload-area { grid-area: file-upload-area; }
 
 .Chart { grid-area: Chart; }
 
-
+.file-upload-btn{
+  border-radius: 50rem;
+  padding: .375rem .75rem;
+  margin-inline-end: .75rem;
+  color: #212529;
+  background-color: #e9ecef;
+  border-width: 0;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  box-shadow:  7px 7px 12px #bebebe,
+              -7px -7px 12px #ffffff;
+}
 
 #upload {
   opacity: 0
@@ -293,6 +302,8 @@ font-size: 30px;
   border: 2px dashed #fe6339;
   padding: 1rem;
   position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .image-area::before {
@@ -312,5 +323,4 @@ font-size: 30px;
   position: relative;
   max-width: 60%;
   max-height:40%;
-
 }

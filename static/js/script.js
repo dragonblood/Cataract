@@ -1,7 +1,7 @@
 function display() {
   var x = document.getElementById("uploadContainer");
   x.style.display = "block";
-  x.style.margin = "0 0 0 5%";
+  x.style.margin = "0 5% 0 5%";
 }
 
 function readURL(e) {
@@ -11,7 +11,7 @@ function readURL(e) {
     }
 }
 // $(document).ready((function() { $("[data-bs-chart]").each((function(e, a) { this.chart = new Chart($(a), $(a).data("bs-chart")) })) })), $((function() { $("#upload").on("change", (function() { readURL(input) })) }));
-var input = document.getElementById("upload"),
+var input = document.getElementById("file-input"),
     infoArea = document.getElementById("upload-label");
 
 function showFileName(e) {

@@ -1,5 +1,5 @@
 # Under Construction
-# Cataract
+# Cataract [![Build and deploy Python app to Azure Web App - cataract](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml/badge.svg)](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml)
 ## 1. About:
 
 A Neumorphic WebApp which allows users to analysis an upload image hosted on azure.

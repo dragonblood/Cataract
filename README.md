@@ -33,11 +33,11 @@ python manage.py runserver
 | Screens |
 |----------------|
 |Initial|
-|<img src="https://github.com/dragonblood/Cataract/screenshots/initial.png"/>|
+|<img src="https://github.com/dragonblood/Cataract/blob/master/screenshots/initial.png"/>|
 |Upload|
-|<img src="https://github.com/dragonblood/Cataract/screenshots/upload.png"/>|
+|<img src="https://github.com/dragonblood/Cataract/blob/master/screenshots/upload.png"/>|
 |Results|
-|<img src="https://github.com/dragonblood/Cataract/screenshots/results.png"/>|
+|<img src="https://github.com/dragonblood/Cataract/blob/master/screenshots/results.png"/>|
 
 ## 4. TODO
 - [x] Put user uploaded images to bucket

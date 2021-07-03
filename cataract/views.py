@@ -41,7 +41,10 @@ def cat(request):
 
             # remote_image = file_link_remote+file_name
             response = azureAPI(local_image)
-            print(response)
+
+            # if os.path.exists(local_image):
+            #     os.remove(local_image)
+            # #else: 
 
         else:
             message = 'The form is not valid. Fix the following error:'
@@ -56,8 +59,6 @@ def azureAPI(image_url):
 
     computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
     #description_results = computervision_client.describe_image(image_url)
-
-
 
     description_results_tags = computervision_client.tag_image_in_stream(image_url)
     print(description_results_tags)
@@ -81,11 +82,9 @@ def azureAPI(image_url):
         print("No tags detected.")
     else:
         for tag in description_results_tags.tags:
-            print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
+            # print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
             ten += 1
             entity['tag'].append(tag.name)
             entity['confidence'].append(tag.confidence * 100)
-            # if ten == 10:
-            #     break
 
         return(entity)

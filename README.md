@@ -2,7 +2,7 @@
 # Cataract
 ## 1. About:
 
-!pending Write about here 
+A Neumorphic WebApp which allows users to analysis an upload image hosted on azure.
 
 ## 2. Steps To Follow:
 
@@ -11,7 +11,7 @@
 git clone https://github.com/dragonblood/Cataract.git
 cd Cataract
 conda env create --file cataract.yml
-conda activate Cataract
+conda activate cataract
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
@@ -33,16 +33,18 @@ python manage.py runserver
 | Screens |
 |----------------|
 |Initial|
-|<img src=""/>|
-|Dashboard|
-|<img src=""/>|
+|<img src="https://github.com/dragonblood/Cataract/screenshots/initial.png"/>|
+|Upload|
+|<img src="https://github.com/dragonblood/Cataract/screenshots/upload.png"/>|
+|Results|
+|<img src="https://github.com/dragonblood/Cataract/screenshots/results.png"/>|
 
 ## 4. TODO
-- [ ] Put user uploaded images to bucket
-- [ ] Auto Delete Images after use
-- [ ] Modify and display results to user
-- [ ] Upload Screenshots
-- [ ] create cataract.yml and requirements.txt
+- [x] Put user uploaded images to bucket
+- [ ] Auto Delete some stuff after use
+- [x] Modify and display results to user
+- [x] Upload Screenshots
+- [x] create cataract.yml and requirements.txt
 - [ ] Add automatic magic code .vscode folder
 
 ### Please Feel Free to raise an issue.

@@ -21,8 +21,8 @@ subscription_key = "a6ff3126d73847a39552834f34e59119"
 endpoint = "https://cataract-api.cognitiveservices.azure.com/"
 
 def cat(request):
-    message = 'Upload as many files as you want!'
-    response = ['NU', 'LL']
+    response = {'tag': ['0'], 'confidence': [0]}
+    file_name = '#'
     if request.method == 'POST':
 
         form = DocumentForm(request.POST, request.FILES)
@@ -39,7 +39,7 @@ def cat(request):
             local_image_path = os.path.join (file_link_local, file_name)
             local_image = open(local_image_path, "rb")
 
-            remote_image = file_link_remote+file_name
+            # remote_image = file_link_remote+file_name
             response = azureAPI(local_image)
             print(response)
 
@@ -49,7 +49,7 @@ def cat(request):
         form = DocumentForm() 
     # documents = Document.objects.all()
 
-    return render(request, 'index.html', {'response': response, 'form': form})
+    return render(request, 'index.html', {'response': response, 'form': form, 'img_name':"documents/"+file_name})
 
 
 def azureAPI(image_url):
@@ -57,15 +57,35 @@ def azureAPI(image_url):
     computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
     #description_results = computervision_client.describe_image(image_url)
 
-    description_results = computervision_client.describe_image_in_stream(image_url)
 
-    print("Description of remote image: ")
 
-    if (len(description_results.captions) == 0):
-        print("No description detected.")
-        return(["No description detected.", 0])
+    description_results_tags = computervision_client.tag_image_in_stream(image_url)
+    print(description_results_tags)
+
+    # description_results_describe = computervision_client.describe_image_in_stream(image_url)
+    # print(description_results_describe)
+
+    # if (len(description_results_tags.captions) == 0):
+    #     print("No description detected.")
+    #     return(["No description detected.", 0])
+    # else:
+        # for caption in description_results_describe.captions:
+        #     print(caption.text, caption.confidence * 100)
+        # return([description_results_describe.tags, description_results_describe.captions])
+
+
+    ten = 0
+    entity = {'tag':[], 'confidence':[]}
+
+    if (len(description_results_tags.tags) == 0):
+        print("No tags detected.")
     else:
-        for caption in description_results.captions:
-            print("'{}' with confidence {:.2f}%".format(caption.text, caption.confidence * 100))
-        return([description_results.tags, description_results.captions])
-    print()
+        for tag in description_results_tags.tags:
+            print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
+            ten += 1
+            entity['tag'].append(tag.name)
+            entity['confidence'].append(tag.confidence * 100)
+            # if ten == 10:
+            #     break
+
+        return(entity)

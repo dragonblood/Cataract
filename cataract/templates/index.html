@@ -1,4 +1,5 @@
 {% load static %}
+{% get_media_prefix as MEDIA_PREFIX %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +15,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6" style="background: #f0f0f0;">
+        <div class="col-xs-12 col-sm-5 col-lg-6" style="background: #f0f0f0;">
           <label class="bigwhitecontainer soft-element soft-shadow">
             <h1>Project Cataract</h1>
             <input type="radio" class="start_btn" onclick="setTimeout(display, 3000);" />
@@ -22,7 +23,7 @@
               <div id="uploadContainer" class="content-container">
                 <div class="bootstrap_img_upload pt-5">
                   <div class="box pt-3">
-                    <img src="{% static 'img/crayon-2072.svg' %}" alt="" width="300px" />
+                    <img src="{% static 'img/upload_lady.svg' %}" alt="" width="300px" />
 
                     <div class="row py-4 bootstrap_img_upload pt-5">
 
@@ -36,14 +37,6 @@
                               {{ form.docfile }}
                           </p>
 
-                        <div class="image-area mt-4">
-                          <img
-                            id="imageResult"
-                            src="#"
-                            alt=""
-                            class="img-fluid rounded shadow-sm mx-auto d-block"
-                          />
-                        </div>
                         <div class="multi-button">
                           <!-- <button>Do something</button> -->
                           <input name="submittext" type="submit" value="Analysis" class="submit_btn">
@@ -78,75 +71,48 @@
           </label>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-xs-12 col-sm-7 col-lg-6">
           <section id="contact" class="contact">
-            <!-- <form action="{% url "home" %}" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              <p>{{ form.non_field_errors }}</p>
-              <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-              <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                <p>
-                  <img src="{% static 'img/upload.png' %}" width="30px" />
-                    {{ form.docfile.errors }}
-                    {{ form.docfile }}
-                </p>
-              </div>
-              <div class="image-area mt-4">
-                <img
-                  id="imageResult"
-                  src="#"
-                  alt=""
-                  class="img-fluid rounded shadow-sm mx-auto d-block"
-                />
-              </div>
-              <div class="multi-button">
-                <button>Do something</button>
-                <input name="submittext" type="submit" value="Analysis" class="submit_btn">
-                <button>I think it will do something</button>
-              </div>
-            </form> -->
 
-            <p><b>Status:</b></p>
-            <p id="status" style="height:160px; width: 593px; overflow: scroll;" />
-            {{response}}
-            {% for tag in response.0 %}
-              <p>{{tag}}</p>
-            {% endfor %}
+            <h3>Image analysis</h3>
 
-            {% for caption in response.1 %}
-              <p>{{caption.text}}</p>
-              <p>{{caption.confidence}}</p>
-            {% endfor %}
-
+            <div class="image-area mt-4">
+              <img
+                id="imageResult"
+                src="{{ MEDIA_PREFIX }}{{img_name}}"
+                alt=""
+                class="img-fluid rounded shadow-sm mx-auto d-block"
+              /></div>
             <div class="row">
 
-              <div class="col-lg-6 col-xl-6">
+              <div class="col-xs-12">
                   <div>
                       <canvas id="barchart"></canvas>
                   </div>
               </div>
-              <div class="col-lg-6 col-xl-6 offset-xl-0">
+              <!-- <div class="col-xs-12">
                   <div class="chart-area">
                       <canvas id="piechart"></canvas>
                   </div>
-              </div>
+              </div> -->
             </div>
+
+            {% for r in response %}
+            <p>{{r.tag}}:{{r.confidence}}</p>
+            {% endfor %}
+
           </section>
         </div>
       </div>
     </div>
-
-
-    <!-- {{discription|json_script:"discription"}} -->
+    {{response.tag|json_script:"image_tags"}}
     <script>
-      var sentiment = ['pos','neg','neu'];
-      var sentiment_data = [50, 29, 30];
+      alert("Warning: Project is not yet finished, Deeper analysis of image is work-under-progress")
+      // var sentiment = ["hi", "bye", "guy"];
+      // var sentiment_data = [10, 20 ,40];
 
-      var lables = ['pos','neg','neu'];
-      var lables_score = [50, 29, 30];
-
-      // var lables = JSON.parse(document.getElementById('discription').textContent);
-      // var lables_score = {{score}};
+      var lables = JSON.parse(document.getElementById('image_tags').textContent);
+      var lables_score = {{response.confidence}};
 
     </script>
     <!-- partial -->

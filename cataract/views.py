@@ -34,7 +34,7 @@ def cat(request):
             file_link_local = MEDIA_ROOT+"/documents/"
             file_link_remote = "https://cataractstorage.blob.core.windows.net/cataract-container/"
 
-            file_name = str(request.FILES['docfile'])
+            file_name = str(request.FILES['docfile']).replace(" ", "_")
 
             local_image_path = os.path.join (file_link_local, file_name)
             local_image = open(local_image_path, "rb")
@@ -61,7 +61,7 @@ def azureAPI(image_url):
     #description_results = computervision_client.describe_image(image_url)
 
     description_results_tags = computervision_client.tag_image_in_stream(image_url)
-    print(description_results_tags)
+    # print(description_results_tags)
 
     # description_results_describe = computervision_client.describe_image_in_stream(image_url)
     # print(description_results_describe)

@@ -6,7 +6,7 @@
   --border-size: 0.125rem;
   --duration: 250ms;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
-  --color-primary: white;
+  --color-primary: #e0e0e0;
   --color-secondary: black;
   --color-tertiary: dodgerblue;
   --shadow: rgba(0, 0, 0, 0.1);
@@ -80,6 +80,10 @@ h1{
   grid-area: File-upload;
 }
 
+p {
+  display: inline-block;
+}
+
 button { grid-area: button; }
 
 .file-upload-area { grid-area: file-upload-area; }
@@ -140,7 +144,7 @@ button { grid-area: button; }
 
 /* On mouse-over, add a grey background color */
 .bigwhitecontainer:hover .submit_btn ~ .checkmark {
-  background-color: #ccc;
+  background-color: #e0e0e0;
 }
 
 .bigwhitecontainer .start_btn:checked ~ .checkmark {
@@ -157,7 +161,7 @@ button { grid-area: button; }
   20% {
     width: 60px;
     height: 60px;
-    background: #f0f0f0;
+    background: #e0e0e0;
     box-shadow:  0 0 0 #cccccc,
                   0 0 0 #ffffff,
                   10px 10px 10px #cccccc inset,
@@ -166,7 +170,7 @@ button { grid-area: button; }
   60% {
     width: 60px;
     height: 400px;
-    background: #f8f8f8;
+    background: #e0e0e0;
     box-shadow:  10px 10px 10px #cccccc,
                   10px 10px 10px #ffffff,
                   0 0 0 #cccccc inset,
@@ -175,7 +179,7 @@ button { grid-area: button; }
   80% {
     width: 300px;
     height: 500px;
-    background: #f8f8f8;
+    background: #e0e0e0;
     box-shadow:  10px 10px 10px #cccccc,
                   10px 10px 10px #ffffff,
                   0 0 0 #cccccc inset,
@@ -184,7 +188,7 @@ button { grid-area: button; }
   100% {
     width: max-content;
     height: max-content;
-    background: #fafafa;
+    background: #e0e0e0;
     box-shadow:  40px 40px 40px #cccccc,
                   0 0 0 #ffffff,
                   0 0 0 #cccccc inset,
@@ -220,11 +224,10 @@ font-size: 30px;
   padding: .375rem .75rem;
   margin-inline-end: .75rem;
   color: #212529;
-  background-color: #e9ecef;
+  background-color: #e0e0e0;
   border-width: 0;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  box-shadow:  7px 7px 12px #bebebe,
-              -7px -7px 12px #ffffff;
+  box-shadow:  7px 7px 12px #bebebe;
 }
 
 .multi-button {

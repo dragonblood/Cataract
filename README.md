@@ -1,8 +1,7 @@
-# Under Construction
-# Cataract [![Build and deploy Python app to Azure Web App - cataract](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml/badge.svg)](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml)
+Cataract [![Build and deploy Python app to Azure Web App - cataract](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml/badge.svg)](https://github.com/dragonblood/Cataract/actions/workflows/master_cataract.yml)
 ## 1. About:
 
-A Neumorphic WebApp which allows users to analysis an upload image hosted on azure.
+Sophistically animated and designed using neuromorphic principles, in this Web app users uploads image, and then the user is presented with the analysis of the image using charts and graphs, using azure blob storage to store and app service to process the image. This Project is deployed using Microsoft Azure AppService.
 
 ## 2. Steps To Follow:
 
@@ -16,7 +15,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
-### ~~~~~~~ OR ~~~~~~~
+#### ---------------- OR ----------------
 
 ### PIP
 ```
@@ -47,6 +46,6 @@ python manage.py runserver
 - [x] create cataract.yml and requirements.txt
 - [ ] Add automatic magic code .vscode folder
 
-### Please Feel Free to raise an issue.
-### Take Permission Before using it in your work.
+### Please Feel Free to raise an issue. 🙋
+### Please give credit when using this in your work.
 
